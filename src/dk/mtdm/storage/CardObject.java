@@ -93,6 +93,7 @@ public class CardObject {
       string = "j";
       break;
       case 1:
+      case 11:
       string = "A";
       break;
       case 2:
@@ -122,13 +123,13 @@ public class CardObject {
       case 10:
       string = "X";
       break;
-      case 11:
+      case 12:
       string = "B";
       break;
-      case 12:
+      case 13:
       string = "D";
       break;
-      case 13:
+      case 14:
       string = "K";
       break;
     }
@@ -138,7 +139,6 @@ public class CardObject {
   public String getNumberString(){
     switch(getNumber()){
       case 1:
-      return "es";
       case 11:
       return "es";
       case 12:
