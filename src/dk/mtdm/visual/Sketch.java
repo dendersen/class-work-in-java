@@ -9,7 +9,7 @@ public class Sketch extends PApplet {
     CardObject test;
 
     public Sketch() {
-        startButton = new StartButton(100, 100, 100, 100, this);
+        startButton = new StartButton("Start", 100, 100, 100, 100, this);
     }
 
     @Override
