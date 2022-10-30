@@ -23,7 +23,7 @@ public class Sketch extends PApplet {
     public void draw() {
         startButton.show(g);
         startButton.hover();
-        test.draw(g, 200, 200, 200, 200);
+        test.draw(g, 200, 200, 100, 200);
     }
 
     @Override

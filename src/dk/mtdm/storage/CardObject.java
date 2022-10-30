@@ -2,6 +2,7 @@ package dk.mtdm.storage;
 
 import processing.core.PImage;
 import processing.core.PApplet;
+import processing.core.PConstants;
 import processing.core.PGraphics;
 
 public class CardObject {
@@ -23,13 +24,23 @@ public class CardObject {
   }
 
   public void draw(PGraphics g, int x, int y, int width, int height) {
-    g.fill(255, 255, 255);
+    float textSize = ((float) (height / 2)) * 0.25f;
+    g.push();
+    g.fill(255);
     g.rect(x, y, width, height);
-    g.image(Symbol, x, y, x + width, y + height / 2);
-    g.image(Letter, x, y, x + width, y + height / 2);
+    g.image(Symbol, x, y, width, height / 2);
+    g.fill(0);
+
+    System.out.println(textSize);
+    g.textSize(textSize);
+
+    g.image(Letter, x, y + height / 2, width, height / 2);
     if (!letterTest()) {
-      g.text(getNumberChar(), x + width / 1.9f, y + height - g.textSize);
+      g.textAlign(PConstants.CENTER, PConstants.CENTER);
+      g.text(getNumberChar(), x, y + height / 2, width, height / 2);
     }
+    g.line(x, y + height / 2, x + width, y + height / 2);
+    g.pop();
   }
 
   public int getNumber() {
