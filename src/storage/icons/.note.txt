@@ -1,0 +1,3 @@
+icons taken from a previus project:
+https://github.com/dendersen/year_assignment.git
+src/dk/mtdm/frontend/icons/*
