@@ -1,22 +1,34 @@
 package dk.mtdm.visual;
 
+import dk.mtdm.storage.CardObject;
 import dk.mtdm.visual.Buttons.StartButton;
 import processing.core.PApplet;
 
 public class Sketch extends PApplet {
-    Button button;
+    StartButton startButton;
+    CardObject test;
 
     public Sketch() {
-        button = new StartButton(100, 100, 100, 100);
+        startButton = new StartButton(100, 100, 100, 100, this);
     }
 
+    @Override
     public void setup() {
         background(10, 150, 20);
+        test = new CardObject(2, 1, this);
+
     }
 
+    @Override
     public void draw() {
-        button.show(g);
-        button.hover(this);
+        startButton.show(g);
+        startButton.hover();
+        test.draw(g, 200, 200, 200, 200);
+    }
+
+    @Override
+    public void mouseClicked() {
+        startButton.clicked();
     }
 
     @Override

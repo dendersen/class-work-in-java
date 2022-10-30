@@ -11,13 +11,15 @@ public abstract class Button {
     private int x;
     private int backgroundColor = 255;
     private final Rectangle bounds;
+    private PApplet p;
 
-    public Button(int x, int y, int w, int h) {
+    public Button(int x, int y, int w, int h, PApplet p) {
         this.x = x;
         this.y = y;
         this.w = w;
         this.h = h;
         this.bounds = new Rectangle(x, y, w, h);
+        this.p = p;
     }
 
     public void show(PGraphics g) {
@@ -29,7 +31,7 @@ public abstract class Button {
 
     // public abstract void clicked();
 
-    private boolean checkBounds(PApplet p) {
+    protected boolean checkBounds() {
         if (bounds.contains(p.mouseX, p.mouseY)) {
             return true;
         } else {
@@ -37,8 +39,8 @@ public abstract class Button {
         }
     }
 
-    public void hover(PApplet g) {
-        if (checkBounds(g)) {
+    public void hover() {
+        if (checkBounds()) {
             backgroundColor = 220;
         } else {
             backgroundColor = 255;
