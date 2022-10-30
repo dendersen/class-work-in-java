@@ -1,4 +1,4 @@
-package dk.mtdm.visual;
+package dk.mtdm.visual.Buttons;
 
 import processing.core.PApplet;
 import processing.core.PConstants;

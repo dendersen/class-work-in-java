@@ -1,4 +1,4 @@
-package dk.mtdm.storage;
+package dk.mtdm.playerObjects;
 
 import processing.core.PImage;
 import processing.core.PApplet;

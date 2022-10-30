@@ -2,7 +2,7 @@ package dk.mtdm.gameLogic;
 
 import java.util.ArrayList;
 
-import dk.mtdm.storage.CardObject;
+import dk.mtdm.playerObjects.CardObject;
 
 public class Game {
   

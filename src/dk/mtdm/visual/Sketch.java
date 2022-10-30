@@ -1,6 +1,6 @@
 package dk.mtdm.visual;
 
-import dk.mtdm.storage.CardObject;
+import dk.mtdm.playerObjects.CardObject;
 import dk.mtdm.visual.Buttons.StartButton;
 import processing.core.PApplet;
 

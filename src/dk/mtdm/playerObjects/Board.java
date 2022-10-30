@@ -1,8 +1,5 @@
-package dk.mtdm.visual;
+package dk.mtdm.playerObjects;
 
-import javax.sound.midi.MidiEvent;
-
-import dk.mtdm.storage.CardObject;
 import processing.core.PGraphics;
 
 public class Board {

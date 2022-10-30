@@ -1,8 +1,6 @@
-package dk.mtdm.storage.Game;
+package dk.mtdm.playerObjects;
 
 import java.util.ArrayList;
-
-import dk.mtdm.storage.CardObject;
 
 public class Player {
   int playerID;
@@ -15,7 +13,7 @@ public class Player {
   public void addCars(ArrayList<CardObject> newCards){
     hand.addAll(newCards);
   }
-  public CardObject removeCard(cardIndex){
-    
+  public CardObject removeCard(int cardIndex){
+    return hand.remove(cardIndex);
   }
 }
