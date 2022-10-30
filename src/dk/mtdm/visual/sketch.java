@@ -4,19 +4,26 @@ import dk.mtdm.visual.Buttons.StartButton;
 import processing.core.PApplet;
 
 public class Sketch extends PApplet {
-    Button button;
+    StartButton startButton;
 
     public Sketch() {
-        button = new StartButton(100, 100, 100, 100);
+        startButton = new StartButton(100, 100, 100, 100, this);
     }
 
+    @Override
     public void setup() {
         background(10, 150, 20);
     }
 
+    @Override
     public void draw() {
-        button.show(g);
-        button.hover(this);
+        startButton.show(g);
+        startButton.hover();
+    }
+
+    @Override
+    public void mouseClicked() {
+        startButton.clicked();
     }
 
     @Override
