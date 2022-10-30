@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import dk.mtdm.playerObjects.CardObject;
 
 public class Game {
-  
   public static boolean SumCheck(ArrayList<CardObject> cards, CardObject hand){
     int sum = 0;
     int ace = 0;
@@ -23,6 +22,7 @@ public class Game {
       return recursiveSumCheck(sum,hand.getNumber(),ace);
     }
   }
+  
   private static boolean recursiveSumCheck(int sum, int total, int ace){
     if (total == 1) total = 11;
     if (sum == total){
@@ -33,4 +33,6 @@ public class Game {
     }
     return false;
   }
+  
+  
 }

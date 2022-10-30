@@ -4,8 +4,10 @@ import processing.core.PGraphics;
 
 public class Board {
     CardObject[] middelcards;
+    Player[] players;
 
-    public Board() {
+    public Board(int numberOfPlayers) {
+        players = new Player[numberOfPlayers];
     }
 
     public void setMiddelCards(CardObject[] cards) {
