@@ -10,72 +10,72 @@ public class CardObject {
   private final PImage Letter;
   private final int symbol;
   private final int number;
-  
-  public CardObject(int number, int symbol,PApplet p){
+
+  public CardObject(int number, int symbol, PApplet p) {
     this.number = number;
     this.symbol = symbol;
-    Symbol = p.loadImage(getSymbolString() + ".png");
-    if (!letterTest()){
-    Letter = p.loadImage("blank.png");
-    }else{
-      Letter = p.loadImage(getSymbolString() + "_" + getNumberString() + ".png");
+    Symbol = p.loadImage("dk/mtdm/storage/icons/" + getSymbolString() + ".png");
+    if (!letterTest()) {
+      Letter = p.loadImage("dk/mtdm/storage/icons/blank.png");
+    } else {
+      Letter = p.loadImage("dk/mtdm/storage/icons/" + getSymbolString() + "_" + getNumberString() + ".png");
     }
   }
-  
-  public void draw(PGraphics g, int x, int y, int width, int height){
+
+  public void draw(PGraphics g, int x, int y, int width, int height) {
     g.fill(255, 255, 255);
     g.rect(x, y, width, height);
-    g.image(Symbol,x,y,x+width,y+height/2);
-    g.image(Letter,x,y,x+width,y+height/2);
-    if (!letterTest()){
-      g.text(getNumberChar(), x+width/1.9f, y+height-g.textSize);
+    g.image(Symbol, x, y, x + width, y + height / 2);
+    g.image(Letter, x, y, x + width, y + height / 2);
+    if (!letterTest()) {
+      g.text(getNumberChar(), x + width / 1.9f, y + height - g.textSize);
     }
   }
-  
-  public int getNumber(){
+
+  public int getNumber() {
     return number;
   }
-  
-  public int getSymbol(){
+
+  public int getSymbol() {
     return symbol;
   }
-  
-  public String getSymbolString(){
+
+  public String getSymbolString() {
     String string = "";
-    switch (getSymbol()){
+    switch (getSymbol()) {
       case 1:
-      string = "hjerter";
-      break;
+        string = "hjerter";
+        break;
       case 2:
-      string = "romber";
-      break;
+        string = "romber";
+        break;
       case 3:
-      string = "klør";
-      break;
+        string = "klør";
+        break;
       case 4:
-      string = "spar";
-      break;
+        string = "spar";
+        break;
     }
     return string;
   }
-  
-  public String getColorString(){
+
+  public String getColorString() {
     String string = "";
-    switch (getSymbol()){
+    switch (getSymbol()) {
       case 1:
       case 2:
-      string = "rød";
-      break;
+        string = "rød";
+        break;
       case 3:
       case 4:
-      string = "sort";
-      break;
+        string = "sort";
+        break;
     }
     return string;
   }
-  
-  public Boolean letterTest(){
-    switch(getNumber()){
+
+  public Boolean letterTest() {
+    switch (getNumber()) {
       case 1:
       case 11:
       case 12:
@@ -85,70 +85,70 @@ public class CardObject {
         return false;
     }
   }
-  
-  public String getNumberChar(){
+
+  public String getNumberChar() {
     String string = "";
-    switch(getNumber()){
-      case 0: 
-      string = "j";
-      break;
+    switch (getNumber()) {
+      case 0:
+        string = "j";
+        break;
       case 1:
-      string = "A";
-      break;
+        string = "A";
+        break;
       case 2:
-      string = "2";
-      break;
+        string = "2";
+        break;
       case 3:
-      string = "3";
-      break;
+        string = "3";
+        break;
       case 4:
-      string = "4";
-      break;
+        string = "4";
+        break;
       case 5:
-      string = "5";
-      break;
+        string = "5";
+        break;
       case 6:
-      string = "6";
-      break;
+        string = "6";
+        break;
       case 7:
-      string = "7";
-      break;
+        string = "7";
+        break;
       case 8:
-      string = "8";
-      break;
+        string = "8";
+        break;
       case 9:
-      string = "9";
-      break;
+        string = "9";
+        break;
       case 10:
-      string = "X";
-      break;
+        string = "X";
+        break;
       case 11:
-      string = "B";
-      break;
+        string = "B";
+        break;
       case 12:
-      string = "D";
-      break;
+        string = "D";
+        break;
       case 13:
-      string = "K";
-      break;
+        string = "K";
+        break;
     }
     return string;
   }
-  
-  public String getNumberString(){
-    switch(getNumber()){
+
+  public String getNumberString() {
+    switch (getNumber()) {
       case 1:
-      return "es";
+        return "es";
       case 11:
-      return "es";
+        return "es";
       case 12:
-      return "bonde";
+        return "bonde";
       case 13:
-      return "dronning";
+        return "dronning";
       case 14:
         return "konge";
       default:
-      return "";
+        return "";
     }
   }
 }
