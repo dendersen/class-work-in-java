@@ -5,8 +5,8 @@ import processing.core.PApplet;
 
 public class StartButton extends Button {
 
-    public StartButton(int x, int y, int w, int h, PApplet p) {
-        super(x, y, w, h, p);
+    public StartButton(String txt, int x, int y, int w, int h, PApplet p) {
+        super(txt, x, y, w, h, p);
     }
 
     public void clicked() {

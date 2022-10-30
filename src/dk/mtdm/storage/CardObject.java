@@ -31,7 +31,6 @@ public class CardObject {
     g.image(Symbol, x, y, width, height / 2);
     g.fill(0);
 
-    System.out.println(textSize);
     g.textSize(textSize);
 
     g.image(Letter, x, y + height / 2, width, height / 2);
@@ -105,8 +104,8 @@ public class CardObject {
         break;
       case 1:
       case 11:
-      string = "A";
-      break;
+        string = "A";
+        break;
       case 2:
         string = "2";
         break;
@@ -132,17 +131,17 @@ public class CardObject {
         string = "9";
         break;
       case 10:
-      string = "X";
-      break;
+        string = "X";
+        break;
       case 12:
-      string = "B";
-      break;
+        string = "B";
+        break;
       case 13:
-      string = "D";
-      break;
+        string = "D";
+        break;
       case 14:
-      string = "K";
-      break;
+        string = "K";
+        break;
     }
     return string;
   }
