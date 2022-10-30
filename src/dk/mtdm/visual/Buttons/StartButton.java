@@ -1,6 +1,5 @@
 package dk.mtdm.visual.Buttons;
 
-import dk.mtdm.visual.Button;
 import processing.core.PApplet;
 
 public class StartButton extends Button {
