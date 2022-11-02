@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import dk.mtdm.playerObjects.CardObject;
 
 public class Game {
+  static CardObject tieBreaker = new CardObject(2, 3, null);
+  static boolean tieBreakerFound = false;
+  
   public static boolean SumCheck(ArrayList<CardObject> cards, CardObject hand){
     int sum = 0;
     int ace = 0;
@@ -34,5 +37,14 @@ public class Game {
     return false;
   }
   
+  public static boolean isPointCard(CardObject card){
+    return card.getNumber() == 1 || card.getNumber() > 9;
+  }
+  public static boolean istieBreaker(CardObject card){
+    return !tieBreakerFound && card.getNumber() == tieBreaker.getNumber() && card.getSymbol() == tieBreaker.getSymbol();
+  }
+  public void runTurn(int playerID){
+    
+  }
   
 }

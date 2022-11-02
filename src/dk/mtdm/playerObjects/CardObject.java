@@ -15,11 +15,16 @@ public class CardObject {
   public CardObject(int number, int symbol, PApplet p) {
     this.number = number;
     this.symbol = symbol;
-    Symbol = p.loadImage("dk/mtdm/storage/icons/" + getSymbolString() + ".png");
-    if (!letterTest()) {
-      Letter = p.loadImage("dk/mtdm/storage/icons/blank.png");
-    } else {
-      Letter = p.loadImage("dk/mtdm/storage/icons/" + getSymbolString() + "_" + getNumberString() + ".png");
+    if (p == null){
+      Symbol = null;
+      Letter = null;
+    }else{
+      Symbol = p.loadImage("dk/mtdm/storage/icons/" + getSymbolString() + ".png");
+      if (!letterTest()) {
+        Letter = p.loadImage("dk/mtdm/storage/icons/blank.png");
+      } else {
+        Letter = p.loadImage("dk/mtdm/storage/icons/" + getSymbolString() + "_" + getNumberString() + ".png");
+      }
     }
   }
 
