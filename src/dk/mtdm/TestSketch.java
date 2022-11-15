@@ -9,6 +9,10 @@ public class TestSketch extends PApplet{
     return this;
   }
   @Override
+  public void settings() {
+    size(100, 100);
+  }
+  @Override
   public void exitActual(){
     if (getGraphics().isGL()){
       final com.jogamp.newt.Window w = (com.jogamp.newt.Window) getSurface().getNative();
