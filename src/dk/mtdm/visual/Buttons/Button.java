@@ -6,12 +6,12 @@ import processing.core.PGraphics;
 import java.awt.Rectangle;
 
 public abstract class Button {
-    private int h;
-    private int w;
-    private int y;
-    private int x;
+    protected int h;
+    protected int w;
+    protected int y;
+    protected int x;
     private int backgroundColor = 255;
-    private final Rectangle bounds;
+    private Rectangle bounds;
     private PApplet p;
     private String txt;
     private float textSize;
@@ -23,6 +23,16 @@ public abstract class Button {
         this.h = h;
         this.bounds = new Rectangle(x, y, w, h);
         this.p = p;
+        this.txt = txt;
+        this.textSize = ((float) (w / 2)) * 0.30f;
+    }
+
+    public void reCalc(String txt,int x,int y,int w,int h){
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
+        this.bounds = new Rectangle(x, y, w, h);
         this.txt = txt;
         this.textSize = ((float) (w / 2)) * 0.30f;
     }

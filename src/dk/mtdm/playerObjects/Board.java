@@ -22,6 +22,7 @@ public class Board {
     }
     private void shuffle(){
     }
+    
     private ArrayList<CardObject> deckGen(int  numberOfCardSets){
         ArrayList<CardObject> out = new ArrayList<CardObject>();
         out.ensureCapacity(numberOfCardSets*sizeOfSet);
@@ -43,6 +44,8 @@ public class Board {
 
     public void show(PGraphics g) {
         for (int i = 0; i < middelcards.length; i++) {
+        int sqr = (int) Math.sqrt(middelcards.length);
+        
         }
     }
 }

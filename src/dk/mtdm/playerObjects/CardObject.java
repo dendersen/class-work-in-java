@@ -1,34 +1,49 @@
 package dk.mtdm.playerObjects;
 
 import processing.core.PImage;
+import dk.mtdm.visual.Buttons.Button;
 import processing.core.PApplet;
 import processing.core.PConstants;
 import processing.core.PGraphics;
 
-public class CardObject {
+public class CardObject extends Button{
 
-  private final PImage Symbol;
-  private final PImage Letter;
+  private PImage Symbol = null;
+  private PImage Letter = null;
   private final int symbol;
   private final int number;
+  private final String path = "src/dk/mtdm/assets/data/";
+  private PGraphics g = null;
 
   public CardObject(int number, int symbol, PApplet p) {
+    super("",0,0,0,0,p);
+    
+    
     this.number = number;
     this.symbol = symbol;
-    if (p == null){
-      Symbol = null;
-      Letter = null;
-    }else{
-      Symbol = p.loadImage("dk/mtdm/storage/icons/" + getSymbolString() + ".png");
+    if (p != null){
+      this.g = p.getGraphics();
+      Symbol = p.loadImage(path + getSymbolString() + ".png");
       if (!letterTest()) {
-        Letter = p.loadImage("dk/mtdm/storage/icons/blank.png");
+        Letter = p.loadImage(path + "blank.png");
       } else {
-        Letter = p.loadImage("dk/mtdm/storage/icons/" + getSymbolString() + "_" + getNumberString() + ".png");
+        Letter = p.loadImage(path + getSymbolString() + "_" + getNumberString() + ".png");
       }
     }
   }
 
+  public void draw(int x,int y, int height,PGraphics g){
+    draw(g, x, y, height/2, height );
+  }
+
+  public void draw(PGraphics g, int x,int y, int width){
+    draw(g, x, y, width, width*2);
+  }
+
   public void draw(PGraphics g, int x, int y, int width, int height) {
+    this.g = g;
+    reCalc("", x, y, width, height);
+    
     float textSize = ((float) (height / 2)) * 0.25f;
     g.push();
     g.fill(255);
@@ -166,4 +181,23 @@ public class CardObject {
         return "";
     }
   }
+
+  @Override
+  public void clicked() {
+    if (checkBounds())
+    System.out.println("Test");
+  }
+
+  @Override
+  public void hover() {
+    if(!checkBounds()) return;
+    g.push();
+    g.noFill();
+    g.strokeWeight(5);
+    g.stroke(0, 0, 255);
+    g.rect(x,y,w,h);
+    g.pop();
+  }
 }
+
+
