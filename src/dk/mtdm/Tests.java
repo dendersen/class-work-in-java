@@ -4,7 +4,10 @@ import processing.core.PApplet;
 
 public class Tests {
   public static String errors = "";
+  public static int NumberOfFailures = 0;
+  public static int NumberOfCriticalFailures =  0; 
   public static void main(String[] args) {
+    try {
     System.out.println();
     ansiTest();
     ansiColors.white();
@@ -13,6 +16,13 @@ public class Tests {
     ansiColors.reset();
     System.out.println(errors);
     System.exit(0);
+  } catch (Exception e) {
+    ansiColors.fakeRedAnsi(true, 255);
+    System.out.println("[WARNING] total test suit failure!");
+    System.out.println(e.getMessage());
+    e.printStackTrace();
+    System.out.println("this error was not caused by a testsuit");
+  }
   }
   
   public static void CardNull(){
@@ -30,6 +40,7 @@ public class Tests {
         ansiColors.red();
         System.out.println("[FAILED]");
         errors += e.getMessage() + "\n" + pullStackTrace(e) + "\n\n";
+        NumberOfFailures++;
       }
 
       try {
@@ -38,6 +49,7 @@ public class Tests {
         if (testCard.getNumber() != 3){
           ansiColors.red();
           System.out.println("[FAILED]");
+          NumberOfFailures++;
         }else{
           ansiColors.green();
           System.out.println("[SUCCES]");
@@ -46,6 +58,7 @@ public class Tests {
         errors += e.getMessage() + "\n" + pullStackTrace(e) + "\n\n";
         ansiColors.red();
         System.out.println("[CRITICAL ERROR!!!]");
+        NumberOfCriticalFailures++;
       }
 
       try {
@@ -54,6 +67,7 @@ public class Tests {
         if(testCard.getSymbol() != 2){
           ansiColors.red();
           System.out.println("[FAILED]");
+          NumberOfFailures++;
         }else{
           ansiColors.green();
           System.out.println("[SUCCES]");
@@ -62,6 +76,7 @@ public class Tests {
         errors += e.getMessage() + "\n" + pullStackTrace(e) + "\n\n";
         ansiColors.red();
         System.out.println("[CRITICAL ERROR!!!]");
+        NumberOfCriticalFailures++;
       }
       
       try {
@@ -70,6 +85,7 @@ public class Tests {
         if (testCard.letterTest()) {
           ansiColors.red();
           System.out.println("[FAILED]");
+          NumberOfFailures++;
         }else{
           ansiColors.green();
           System.out.println("[SUCCES]");
@@ -78,6 +94,7 @@ public class Tests {
         errors += e.getMessage() + "\n" + pullStackTrace(e) + "\n\n";
         ansiColors.red();
         System.out.println("[CRITICAL ERROR!!!]");
+        NumberOfCriticalFailures++;
       }
 
       try {
@@ -86,6 +103,7 @@ public class Tests {
         if (testCard.getNumberString() != "") {
           ansiColors.red();
           System.out.println("[FAILED]");
+          NumberOfFailures++;
         }else{
           ansiColors.green();
           System.out.println("[SUCCES]");
@@ -94,12 +112,14 @@ public class Tests {
         errors += e.getMessage() + "\n" + pullStackTrace(e) + "\n\n";
         ansiColors.red();
         System.out.println("[CRITICAL ERROR!!!]");
+        NumberOfCriticalFailures++;
       }
     }catch(Exception e){
         errors += e.getMessage() + "\n" + pullStackTrace(e) + "\n\n";
         System.out.println("\n[CRITICAL ERROR]\n\t unchaught error in CardNull test suit");
       System.out.println(e);
       e.printStackTrace();
+      NumberOfCriticalFailures++;
     }
   }
   
@@ -121,6 +141,7 @@ public class Tests {
         errors += e.getMessage() + "\n" + pullStackTrace(e) + "\n\n";
         ansiColors.red();
         System.out.println("[FAILED]");
+        NumberOfFailures++;
       }
 
       try {
@@ -129,7 +150,8 @@ public class Tests {
         if (testCard.getNumber() != 3){
           ansiColors.red();
           System.out.println("[FAILED]");
-        }else{
+          NumberOfFailures++;
+      }else{
           ansiColors.green();
           System.out.println("[SUCCES]");
         }
@@ -137,6 +159,7 @@ public class Tests {
         errors += e.getMessage() + "\n" + pullStackTrace(e) + "\n\n";
         ansiColors.red();
         System.out.println("[CRITICAL ERROR!!!]");
+        NumberOfCriticalFailures++;
       }
 
       try {
@@ -145,7 +168,8 @@ public class Tests {
         if(testCard.getSymbol() != 2){
           ansiColors.red();
           System.out.println("[FAILED]");
-        }else{
+          NumberOfFailures++;
+      }else{
           ansiColors.green();
           System.out.println("[SUCCES]");
         }
@@ -153,6 +177,7 @@ public class Tests {
         errors += e.getMessage() + "\n" + pullStackTrace(e) + "\n\n";
         ansiColors.red();
         System.out.println("[CRITICAL ERROR!!!]");
+        NumberOfCriticalFailures++;
       }
       
       try {
@@ -161,7 +186,8 @@ public class Tests {
         if (testCard.letterTest()) {
           ansiColors.red();
           System.out.println("[FAILED]");
-        }else{
+          NumberOfFailures++;
+      }else{
           ansiColors.green();
           System.out.println("[SUCCES]");
         }
@@ -169,14 +195,15 @@ public class Tests {
         errors += e.getMessage() + "\n" + pullStackTrace(e) + "\n\n";
         ansiColors.red();
         System.out.println("[CRITICAL ERROR!!!]");
+        NumberOfCriticalFailures++;
       }
-
       try {
         ansiColors.white();
         System.out.print("NumStr:\t\t");
         if (testCard.getNumberString() != "") {
           ansiColors.red();
           System.out.println("[FAILED]");
+          NumberOfFailures++;
         }else{
           ansiColors.green();
           System.out.println("[SUCCES]");
@@ -185,17 +212,20 @@ public class Tests {
         errors += e.getMessage() + "\n" + pullStackTrace(e) + "\n\n";
         ansiColors.red();
         System.out.println("[CRITICAL ERROR!!!]");
+        NumberOfCriticalFailures++;
       }
     }catch(Exception e){
       System.out.println("\n[CRITICAL ERROR]\n\t unchaught error in CardNull test suit");
       System.out.println(e);
       e.printStackTrace();
+      NumberOfCriticalFailures++;
     }
     draw.exitCalled();
   }
   
   public static void ansiTest() {
-    System.out.println("\nstarting ansi test");
+    try{
+    System.out.println("\nstarting ansi test suit");
     ansiColors.blue();
     System.out.println("blue");
     ansiColors.cyan();
@@ -211,12 +241,21 @@ public class Tests {
     ansiColors.white();
     System.out.println("white");
     ansiColors.yellow();
-    System.out.println("yellow");
+    System.out.println("yellow\n");
     ansiColors.reset();
 
     ansiColors.allTest();
     ansiColors.reset();
+    System.out.println("\n");
+    ansiColors.redTest();
+    ansiColors.reset();
     System.out.println();
+    }catch(Exception e){
+      System.out.println("\n[CRITICAL ERROR]\n\t unchaught error in ansi test suit");
+      System.out.println(e);
+      e.printStackTrace();
+      NumberOfCriticalFailures++;
+    }
   }
   
   public static String pullStackTrace(Exception e) {
