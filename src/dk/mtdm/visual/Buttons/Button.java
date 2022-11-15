@@ -12,7 +12,7 @@ public abstract class Button {
     protected int x;
     private int backgroundColor = 255;
     private Rectangle bounds;
-    private PApplet p;
+    protected PApplet p;
     private String txt;
     private float textSize;
 

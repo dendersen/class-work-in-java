@@ -8,8 +8,8 @@ import processing.core.PGraphics;
 
 public class CardObject extends Button{
 
-  private PImage Symbol = null;
-  private PImage Letter = null;
+  private PImage Symbol;
+  private PImage Letter;
   private final int symbol;
   private final int number;
   private final String path = "src/dk/mtdm/assets/data/";
@@ -18,16 +18,16 @@ public class CardObject extends Button{
   public CardObject(int number, int symbol, PApplet p) {
     super("",0,0,0,0,p);
     
-    
     this.number = number;
     this.symbol = symbol;
+    // System.out.println(toString());
     if (p != null){
       this.g = p.getGraphics();
       Symbol = p.loadImage(path + getSymbolString() + ".png");
       if (!letterTest()) {
         Letter = p.loadImage(path + "blank.png");
       } else {
-        Letter = p.loadImage(path + getSymbolString() + "_" + getNumberString() + ".png");
+        Letter = p.loadImage(path + getColorString() + "_" + getNumberString() + ".png");
       }
     }
   }
@@ -110,6 +110,7 @@ public class CardObject extends Button{
       case 11:
       case 12:
       case 13:
+      case 14:
         return true;
       default:
         return false;
@@ -197,6 +198,14 @@ public class CardObject extends Button{
     g.stroke(0, 0, 255);
     g.rect(x,y,w,h);
     g.pop();
+  }
+  public String toString(){
+    String out = "";
+    out += "[" + getNumberChar() + ",";
+    out += getSymbolString() + " || ";
+    out += getNumber() + ",";
+    out += getSymbol() + "]";
+    return out;
   }
 }
 

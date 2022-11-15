@@ -2,12 +2,23 @@ package dk.mtdm.gameLogic;
 
 import java.util.ArrayList;
 
+import dk.mtdm.playerObjects.Board;
 import dk.mtdm.playerObjects.CardObject;
+import dk.mtdm.playerObjects.Player;
+import processing.core.PApplet;
+import processing.core.PGraphics;
 
 public class Game {
   static CardObject tieBreaker = new CardObject(2, 3, null);
   static boolean tieBreakerFound = false;
-  
+  public static GameStates gameState = GameStates.start;
+  private static Board board;
+
+  public static void startGame(int numberOfPlayers,PApplet p) {
+    // TODO remove hard code of numberCardsSetes
+    board = new Board(numberOfPlayers, 1, p);
+  }
+
   public static boolean SumCheck(ArrayList<CardObject> cards, CardObject hand){
     int sum = 0;
     int ace = 0;
@@ -43,8 +54,23 @@ public class Game {
   public static boolean istieBreaker(CardObject card){
     return !tieBreakerFound && card.getNumber() == tieBreaker.getNumber() && card.getSymbol() == tieBreaker.getSymbol();
   }
-  public void runTurn(int playerID){
-    
+  public static void runTurn(PGraphics g, int cardWidth){
+    board.show(g, cardWidth);
+    board.turn();
   }
-  
+  public static void performeAction(ArrayList<CardObject> pickedMiddelCards, CardObject activeCard){
+    if (board.performeAction(pickedMiddelCards, activeCard)){
+    }
+  }
+  public static void drawTurn(PGraphics g, int cardWidth) {
+    board.show(g, cardWidth);
+    return;
+  }
+
+  public static ArrayList<CardObject> getScreenCards() {
+    ArrayList <CardObject> b = board.getMiddelCards();
+    b.addAll(board.getPlayers()[board.ActivePlayerID].getHand());
+    return b;
+  }
+
 }

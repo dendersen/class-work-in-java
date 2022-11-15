@@ -1,5 +1,7 @@
 package dk.mtdm.visual.Buttons;
 
+import dk.mtdm.gameLogic.Game;
+import dk.mtdm.gameLogic.GameStates;
 import processing.core.PApplet;
 
 public class StartButton extends Button {
@@ -9,8 +11,11 @@ public class StartButton extends Button {
     }
 
     public void clicked() {
-        if (checkBounds())
-            System.out.println("Test");
+        if (checkBounds()){
+            // TODO remove hard code of numberOfPlayers
+            Game.gameState = GameStates.playing;
+            Game.startGame(2, p);
+        }
     }
 
 }
