@@ -2,6 +2,7 @@ package dk.mtdm.visual;
 
 import java.util.ArrayList;
 
+import dk.mtdm.Main;
 import dk.mtdm.gameLogic.Game;
 import dk.mtdm.playerObjects.CardObject;
 import dk.mtdm.visual.Buttons.Button;
@@ -23,7 +24,7 @@ public class Sketch extends PApplet {
 
     @Override
     public void setup() {
-        background(10, 150, 20);
+        background(Main.backgroundColor[0],Main.backgroundColor[1],Main.backgroundColor[2]);
         startButton = new StartButton("Start", width / 2 - 200, height / 2 - 100, 400, 200, this);
 
         // TODO Change pos/size of button
@@ -70,7 +71,7 @@ public class Sketch extends PApplet {
                 unLockButton.clicked();
                 ArrayList<CardObject> screenCards = Game.getScreenCards();
                 for (int i = 0; i < screenCards.size(); i++) {
-                    screenCards.get(i).hover();
+                    screenCards.get(i).clicked();
                 }
                 break;
             case playing:

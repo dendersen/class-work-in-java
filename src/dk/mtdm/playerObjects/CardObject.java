@@ -1,6 +1,7 @@
 package dk.mtdm.playerObjects;
 
 import processing.core.PImage;
+import dk.mtdm.Main;
 import dk.mtdm.visual.Buttons.Button;
 import processing.core.PApplet;
 import processing.core.PConstants;
@@ -14,6 +15,7 @@ public class CardObject extends Button{
   private final int number;
   private final String path = "src/dk/mtdm/assets/data/";
   private PGraphics g = null;
+  private boolean isClicked = false;
 
   public CardObject(int number, int symbol, PApplet p) {
     super("",0,0,0,0,p);
@@ -185,12 +187,6 @@ public class CardObject extends Button{
 
   @Override
   public void clicked() {
-    if (checkBounds())
-    System.out.println("Test");
-  }
-
-  @Override
-  public void hover() {
     if(!checkBounds()) return;
     g.push();
     g.noFill();
@@ -198,6 +194,24 @@ public class CardObject extends Button{
     g.stroke(0, 0, 255);
     g.rect(x,y,w,h);
     g.pop();
+    if (!isClicked) {
+      isClicked = true;
+      return;
+    }
+    g.push();
+    g.noFill();
+    g.strokeWeight(5);
+    g.stroke(Main.backgroundColor[0],Main.backgroundColor[1],Main.backgroundColor[2]);
+    g.rect(x,y,w,h);
+    g.pop();
+    draw(g, x, y, w);
+    isClicked = false;
+  }
+
+  @Override
+  public void hover() {
+    if (checkBounds())
+    System.out.println("Test");
   }
   public String toString(){
     String out = "";
